@@ -401,6 +401,9 @@ body::after {
 }
 
 .social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -412,6 +415,12 @@ body::after {
 .social-links a:hover {
   color: var(--accent);
   letter-spacing: 0.25em;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .copyright {

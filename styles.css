@@ -1,0 +1,445 @@
+/* ========================================
+   Leo Clark Ribeiro — Cinematic Portfolio
+   Elegant, film-inspired design
+   ======================================== */
+
+:root {
+  --bg-dark: #070707;
+  --bg-elevated: #0d0d0d;
+  --text-primary: #f5f0e8;
+  --text-secondary: #a89f8f;
+  --text-muted: #6b6358;
+  --accent: #c9a227;
+  --accent-dim: rgba(201, 162, 39, 0.3);
+  --border: rgba(245, 240, 232, 0.08);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Syne', -apple-system, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Subtle film grain overlay (cinematic texture) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, var(--accent-dim) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(13, 13, 13, 0.9) 0%, var(--bg-dark) 70%),
+    var(--bg-dark);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 1.2s var(--ease-out-expo) 0.3s forwards;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s var(--ease-out-expo) 0.6s forwards;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out-expo) 1.2s forwards;
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+}
+
+.scroll-indicator span {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-indicator svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ========================================
+   Project Sections
+   ======================================== */
+
+.project {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.project-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .project-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.project-media {
+  position: relative;
+}
+
+.project-media.reveal {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+}
+
+.project-media.reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-info.reveal {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+}
+
+.project-info.reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Alternating layout */
+.project:nth-child(even) .project-inner {
+  direction: rtl;
+}
+
+.project:nth-child(even) .project-inner > * {
+  direction: ltr;
+}
+
+.project:nth-child(even) .project-media.reveal {
+  transform: translateX(60px);
+}
+
+.project:nth-child(even) .project-media.reveal.visible {
+  transform: translateX(0);
+}
+
+.project:nth-child(even) .project-info.reveal {
+  transform: translateX(-60px);
+}
+
+.project:nth-child(even) .project-info.reveal.visible {
+  transform: translateX(0);
+}
+
+/* Video Wrapper */
+.video-wrapper {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, #121212 100%);
+}
+
+.video-placeholder span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.video-placeholder a {
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s, letter-spacing 0.3s;
+}
+
+.video-placeholder a:hover {
+  color: var(--text-primary);
+  letter-spacing: 0.3em;
+}
+
+/* Project Info */
+.project-year {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.project-info h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.project-role {
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 1rem;
+}
+
+.project-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 32ch;
+}
+
+/* ========================================
+   CTA Section
+   ======================================== */
+
+.cta {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.cta.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+}
+
+.cta.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-content {
+  text-align: center;
+}
+
+.cta-text {
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.cta-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.4s, letter-spacing 0.4s;
+}
+
+.cta-link:hover {
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.footer {
+  padding: 4rem 2rem 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s, letter-spacing 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  letter-spacing: 0.25em;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ========================================
+   Scroll-driven animations (native CSS)
+   ======================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-bg {
+    animation: subtlePulse 8s ease-in-out infinite;
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+}
+
+/* View Transitions API (progressive enhancement) */
+@supports (view-transition-name: none) {
+  .hero-title {
+    view-transition-name: hero-title;
+  }
+}

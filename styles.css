@@ -394,6 +394,23 @@ body::after {
   letter-spacing: 0.1em;
 }
 
+.cta-link .slashed-zero {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-link .slashed-zero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.05em;
+  right: -0.05em;
+  height: 0.08em;
+  background: currentColor;
+  transform: translateY(-50%) rotate(-25deg);
+  transform-origin: center;
+}
+
 /* ========================================
    Footer
    ======================================== */

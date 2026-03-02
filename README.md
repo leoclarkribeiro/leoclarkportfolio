@@ -1,14 +1,14 @@
-# Leo Clark Ribeiro — Portfolio
+# Leo Clark Ribeiro - Portfolio
 
 A cinematic, elegant portfolio website with buttery smooth scroll animations and modern web capabilities.
 
 ## Features
 
-- **Lenis smooth scroll** — Physics-based, silky scrolling
-- **Scroll-triggered reveals** — Sections animate into view as you scroll
-- **Cinematic aesthetic** — Dark film-inspired design with Cormorant Garamond + Syne typography
-- **Responsive** — Works on desktop, tablet, and mobile
-- **Respects motion preferences** — Animations disabled when users prefer reduced motion
+- **Lenis smooth scroll** - Physics-based, silky scrolling
+- **Scroll-triggered reveals** - Sections animate into view as you scroll
+- **Cinematic aesthetic** - Dark film-inspired design with Cormorant Garamond + Syne typography
+- **Responsive** - Works on desktop, tablet, and mobile
+- **Respects motion preferences** - Animations disabled when users prefer reduced motion
 
 ## Local development
 
@@ -26,9 +26,9 @@ Then open [http://localhost:8000](http://localhost:8000).
 
 The site is static HTML/CSS/JS. Deploy to any host:
 
-- **Netlify** / **Vercel** — Drag the folder or connect your repo
-- **GitHub Pages** — Push to a repo and enable Pages
-- **Your own server** — Upload the files via FTP/SFTP
+- **Netlify** / **Vercel** - Drag the folder or connect your repo
+- **GitHub Pages** - Push to a repo and enable Pages
+- **Your own server** - Upload the files via FTP/SFTP
 
 ## Customization
 

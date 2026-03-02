@@ -1,5 +1,5 @@
 /**
- * Leo Clark Ribeiro — Cinematic Portfolio
+ * Leo Clark Ribeiro - Cinematic Portfolio
  * Smooth scroll (Lenis) + scroll-triggered reveal animations
  */
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Lenis smooth scroll — buttery smooth scrolling
+ * Lenis smooth scroll - buttery smooth scrolling
  */
 function initLenis() {
   if (typeof Lenis === 'undefined') return;
@@ -35,7 +35,7 @@ function initLenis() {
 }
 
 /**
- * Intersection Observer — reveal elements on scroll
+ * Intersection Observer - reveal elements on scroll
  */
 function initRevealAnimations() {
   const reveals = document.querySelectorAll('.reveal');

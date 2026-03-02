@@ -381,7 +381,8 @@ body::after {
 }
 
 .cta-link {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Roboto Mono', 'JetBrains Mono', monospace;
+  font-variant-numeric: slashed-zero;
   font-size: clamp(2rem, 5vw, 3rem);
   color: var(--text-primary);
   text-decoration: none;
@@ -392,23 +393,6 @@ body::after {
 .cta-link:hover {
   color: var(--accent);
   letter-spacing: 0.1em;
-}
-
-.cta-link .slashed-zero {
-  position: relative;
-  display: inline-block;
-}
-
-.cta-link .slashed-zero::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -0.05em;
-  right: -0.05em;
-  height: 0.08em;
-  background: currentColor;
-  transform: translateY(-50%) rotate(-25deg);
-  transform-origin: center;
 }
 
 /* ========================================

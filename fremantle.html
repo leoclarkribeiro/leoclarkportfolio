@@ -120,7 +120,7 @@
   <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
   <script src="script.js"></script>
     <script>
-    // Contact form: submit via FormSubmit AJAX, show thanks, send copy to user
+    // Contact form: submit via FormSubmit AJAX, show thanks
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const form = this;
@@ -135,17 +135,18 @@
           subject: formData.get('subject'),
           message: formData.get('message'),
           _subject: formData.get('_subject'),
-          _template: formData.get('_template'),
-          _autoresponse: formData.get('_autoresponse')
+          _template: formData.get('_template')
         };
         const res = await fetch('https://formsubmit.co/ajax/leoclark@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data)
         });
-        const result = await res.json();
-        if (result.success) {
-          form.hidden = true;
+        const result = await res.json().catch(() => ({}));
+        const success = res.ok && (result.success === true || result.success === 'true');
+        if (success) {
+          form.reset();
+          form.style.display = 'none';
           thanks.hidden = false;
           thanks.classList.add('visible');
         } else {

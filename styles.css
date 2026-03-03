@@ -529,6 +529,7 @@ body::after {
 .cta-link-hero-font {
   font-family: 'Manrope', -apple-system, sans-serif;
   font-variant-numeric: normal;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .cta-sublink {

@@ -526,6 +526,11 @@ body::after {
   letter-spacing: 0.1em;
 }
 
+.cta-link-hero-font {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-variant-numeric: normal;
+}
+
 .cta-sublink {
   display: block;
   margin-top: 1.5rem;

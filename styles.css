@@ -345,6 +345,25 @@ body::after {
   max-width: 32ch;
 }
 
+.project-link {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.project-link a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s, letter-spacing 0.3s;
+}
+
+.project-link a:hover {
+  color: var(--text-primary);
+}
+
+.cta-link-back {
+  font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+}
+
 /* ========================================
    CTA Section
    ======================================== */
@@ -393,6 +412,20 @@ body::after {
 .cta-link:hover {
   color: var(--accent);
   letter-spacing: 0.1em;
+}
+
+.cta-sublink {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.cta-sublink:hover {
+  color: var(--accent);
 }
 
 /* ========================================

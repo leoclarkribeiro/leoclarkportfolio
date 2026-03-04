@@ -457,6 +457,10 @@ body::after {
   margin: 0;
 }
 
+.faq-item p + p {
+  margin-top: 0.75rem;
+}
+
 /* ========================================
    Contact Form (Fremantle page)
    ======================================== */

@@ -374,6 +374,90 @@ body::after {
 }
 
 /* ========================================
+   Intro, Service & FAQ sections (Fremantle)
+   ======================================== */
+
+.intro-section,
+.service-section,
+.faq-section {
+  padding: 4rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.intro-heading,
+.service-section h2,
+.faq-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  margin: 0 0 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.intro-text,
+.intro-local,
+.service-section p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.intro-local {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+}
+
+.service-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 2rem;
+  padding: 0 2rem;
+}
+
+.service-section-title.project-grid-full {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+}
+
+.faq-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.faq-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.faq-item h3 {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.faq-item p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ========================================
    Contact Form (Fremantle page)
    ======================================== */
 

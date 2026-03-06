@@ -76,6 +76,7 @@ body::after {
 
 .name-banner {
   position: relative;
+  z-index: 2;
   height: 42vh;
   min-height: 240px;
   max-height: 420px;
@@ -87,6 +88,12 @@ body::after {
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   mask-size: 100% 100%;
   -webkit-mask-size: 100% 100%;
+}
+
+/* Overlap hero behind banner so yellow glow shows through fade (Fremantle page) */
+.name-banner + .hero {
+  margin-top: -14vh;
+  z-index: 1;
 }
 
 /* L-shaped golden bracket (top-left decorative) */
@@ -288,7 +295,7 @@ body::after {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, var(--accent-dim) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(20, 20, 20, 0.7) 0%, transparent 50%),
     radial-gradient(ellipse 100% 100% at 50% 100%, rgba(13, 13, 13, 0.9) 0%, var(--bg-dark) 70%),
     var(--bg-dark);
   z-index: 0;

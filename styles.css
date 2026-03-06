@@ -71,6 +71,206 @@ body::after {
 }
 
 /* ========================================
+   Name Banner (Fremantle page)
+   ======================================== */
+
+.name-banner {
+  position: relative;
+  height: 42vh;
+  min-height: 240px;
+  max-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+}
+
+/* L-shaped golden bracket (top-left decorative) */
+.name-banner::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-left: 2px solid var(--accent);
+  border-top: 2px solid var(--accent);
+  z-index: 3;
+}
+
+/* L-shaped golden bracket (bottom-right decorative) */
+.name-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  z-index: 3;
+}
+
+.name-banner-images {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+/* Side images extend under the pfp – no clip, they hide behind the center */
+.name-banner-img {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.name-banner-img:nth-child(1),
+.name-banner-img:nth-child(3) {
+  z-index: 1;
+}
+
+/* Pfp in center: on top, diagonal edges define the composition */
+.name-banner-img:nth-child(2) {
+  z-index: 2;
+  flex: 0 0 40%;
+  margin: 0 -6%;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+}
+
+/* Golden-yellow diagonal lines – aligned with pfp edges (left: slope ↘, right: slope ↙) */
+.name-banner-images::before,
+.name-banner-images::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--accent);
+  z-index: 3;
+  box-shadow: 0 0 10px rgba(201, 162, 39, 0.35);
+  transform-origin: center center;
+}
+
+/* Left separator: rotated outward at top to match pfp edge */
+.name-banner-images::before {
+  left: 32%;
+  transform: rotate(-9deg);
+}
+
+/* Right separator: rotated outward at top to match pfp edge */
+.name-banner-images::after {
+  left: 68%;
+  transform: rotate(8deg);
+}
+
+.name-banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.5s var(--ease-in-out), transform 0.5s var(--ease-in-out);
+}
+
+/* Desaturate side images, keep centre (pfp) vivid */
+.name-banner-img:nth-child(1) img,
+.name-banner-img:nth-child(3) img {
+  filter: brightness(0.9) saturate(0.6) contrast(1.05);
+  object-position: center 40%;
+}
+
+.name-banner-img:nth-child(2) img {
+  filter: brightness(1.02) contrast(1.05);
+  object-position: center center;
+}
+
+.name-banner-img:hover img {
+  filter: brightness(1.05) saturate(1) contrast(1.05);
+  transform: scale(1.03);
+}
+
+.name-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 7, 7, 0.3) 0%,
+    rgba(7, 7, 7, 0.5) 50%,
+    rgba(7, 7, 7, 0.82) 70%,
+    var(--bg-dark) 100%
+  );
+  z-index: 1;
+}
+
+.name-banner-title {
+  position: relative;
+  z-index: 2;
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-size: clamp(0.75rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Golden underline under name */
+.name-banner-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4em;
+  height: 1px;
+  background: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .name-banner {
+    height: 35vh;
+    min-height: 200px;
+  }
+
+  .name-banner::before {
+    width: 1.25rem;
+    height: 1.25rem;
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .name-banner::after {
+    width: 1.25rem;
+    height: 1.25rem;
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+
+  /* Simpler panels on mobile – equal width, no overlap */
+  .name-banner-img {
+    flex: 1;
+  }
+
+  .name-banner-img:nth-child(2) {
+    flex: 1;
+    margin: 0;
+    clip-path: none;
+  }
+
+  /* Hide diagonal separators on mobile */
+  .name-banner-images::before,
+  .name-banner-images::after {
+    display: none;
+  }
+}
+
+/* ========================================
    Hero Section
    ======================================== */
 

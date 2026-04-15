@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLenis();
   initRevealAnimations();
   initScrollIndicator();
+  initEpisodePlayer();
 });
 
 /**
@@ -84,4 +85,34 @@ function initScrollIndicator() {
 
   // Initial check (e.g. if page loads mid-scroll)
   handleScroll({ scroll: window.scrollY });
+}
+
+/**
+ * Local episode picker for Vai Pra Onde project
+ */
+function initEpisodePlayer() {
+  const player = document.querySelector('[data-episode-player]');
+  if (!player) return;
+
+  const video = player.querySelector('[data-episode-video]');
+  const currentEpisodeLabel = player.querySelector('[data-episode-current]');
+  const buttons = Array.from(player.querySelectorAll('.episode-button'));
+
+  if (!video || !currentEpisodeLabel || buttons.length === 0) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const episode = button.dataset.episode;
+      const title = button.dataset.title;
+      const source = button.dataset.src;
+      if (!episode || !title || !source) return;
+
+      buttons.forEach((item) => item.classList.remove('active'));
+      button.classList.add('active');
+
+      video.src = source;
+      video.load();
+      currentEpisodeLabel.textContent = `Episode ${episode}: ${title}`;
+    });
+  });
 }

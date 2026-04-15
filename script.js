@@ -111,7 +111,7 @@ function initEpisodePlayer() {
       button.classList.add('active');
 
       video.src = source;
-      video.load();
+      video.title = `Vai Pra Onde - France Episode ${episode}: ${title}`;
       currentEpisodeLabel.textContent = `Episode ${episode}: ${title}`;
     });
   });

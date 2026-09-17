@@ -88,31 +88,33 @@ function initScrollIndicator() {
 }
 
 /**
- * Local episode picker for Vai Pra Onde project
+ * Local episode pickers (Vai Pra Onde, Snow Camp, etc.)
  */
 function initEpisodePlayer() {
-  const player = document.querySelector('[data-episode-player]');
-  if (!player) return;
+  const players = document.querySelectorAll('[data-episode-player]');
 
-  const video = player.querySelector('[data-episode-video]');
-  const currentEpisodeLabel = player.querySelector('[data-episode-current]');
-  const buttons = Array.from(player.querySelectorAll('.episode-button'));
+  players.forEach((player) => {
+    const video = player.querySelector('[data-episode-video]');
+    const currentEpisodeLabel = player.querySelector('[data-episode-current]');
+    const buttons = Array.from(player.querySelectorAll('.episode-button'));
+    const showTitle = player.dataset.showTitle || 'Episode';
 
-  if (!video || !currentEpisodeLabel || buttons.length === 0) return;
+    if (!video || !currentEpisodeLabel || buttons.length === 0) return;
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const episode = button.dataset.episode;
-      const title = button.dataset.title;
-      const source = button.dataset.src;
-      if (!episode || !title || !source) return;
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const episode = button.dataset.episode;
+        const title = button.dataset.title;
+        const source = button.dataset.src;
+        if (!episode || !title || !source) return;
 
-      buttons.forEach((item) => item.classList.remove('active'));
-      button.classList.add('active');
+        buttons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
 
-      video.src = source;
-      video.title = `Vai Pra Onde - France Episode ${episode}: ${title}`;
-      currentEpisodeLabel.textContent = `Episode ${episode}: ${title}`;
+        video.src = source;
+        video.title = `${showTitle} Episode ${episode}: ${title}`;
+        currentEpisodeLabel.textContent = `Episode ${episode}: ${title}`;
+      });
     });
   });
 }
